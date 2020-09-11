@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBg"
-    android:padding="0dp"
-    android:paddingLeft="16dp"
-    android:paddingTop="0dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="0dp"
-    tools:context=".MainActivity">
+    tools:context=".FundsActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:theme="@style/ToolbarColoredBackArrow"
+            app:title="@string/fundsActivityHeaderTitle"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/noFundsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_placeholder"
         android:textColor="@color/colorPlaceholder"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
         app:lineHeight="20dp"
         tools:layout_editor_absoluteY="286dp" />
 
@@ -29,9 +44,11 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/btn_bg"
+        android:elevation="0dp"
         android:includeFontPadding="false"
+        android:onClick="onFundCreateButtonClicked"
         android:paddingLeft="16dp"
         android:paddingTop="0dp"
         android:paddingRight="16dp"
@@ -39,11 +56,12 @@
         android:text="@string/main_btn"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="15dp"
-        android:elevation="0dp"
+        android:textSize="15sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@id/noFundsText"
         tools:text="@string/main_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
