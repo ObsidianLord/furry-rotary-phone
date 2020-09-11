@@ -4,6 +4,7 @@
     <color name="colorPlaceholder">#818C99</color>
     <color name="colorPrimaryBg">#FFFFFF</color>
     <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorSecondaryText">#000000</color>
 
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>

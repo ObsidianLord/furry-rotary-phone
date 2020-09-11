@@ -2,4 +2,11 @@
     <string name="app_name">Пожертвования</string>
     <string name="main_placeholder">У Вас пока нет сборов.\nНачните доброе дело.</string>
     <string name="main_btn">Создать сбор</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string-array name="catNames">
+        <item>Счёт VK Pay * 1234</item>
+        <item>Счёт VK Pay * 228</item>
+    </string-array>
 </resources>
