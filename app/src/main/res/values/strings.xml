@@ -8,4 +8,8 @@
     <string name="targetFundDescription">Когда есть определённая цель</string>
     <string name="regularFundTitle">Регулярный сбор</string>
     <string name="regularFundDescription">Если помощь нужна ежемесячно</string>
+    <string-array name="catNames">
+        <item>Счёт VK Pay * 1234</item>
+        <item>Счёт VK Pay * 228</item>
+    </string-array>
 </resources>
