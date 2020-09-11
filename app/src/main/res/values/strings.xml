@@ -2,4 +2,12 @@
     <string name="app_name">Пожертвования</string>
     <string name="main_placeholder">У Вас пока нет сборов.\nНачните доброе дело.</string>
     <string name="main_btn">Создать сбор</string>
+
+    <string name="snippet_author">Матвей Правосудов</string>
+    <string name="new_date">час назад</string>
+    <string name="new_text">Сейчас самое время помочь тем, кто не может попросить о помощи сам.</string>
+    <string name="snippet_title">Добряши помогают котикам</string>
+    <string name="snippet_subtitle">Матвей Правосудов • Закончится через 5 дней</string>
+    <string name="snippet_raised">Собрано 8 750 ₽ из 10 000 ₽</string>
+    <string name="snippet_help">Помочь</string>
 </resources>
