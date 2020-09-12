@@ -3,11 +3,12 @@ package com.vk.vezdecode
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
-import java.lang.IllegalStateException
+import kotlinx.android.synthetic.main.fund_type_choose_activity.*
+
 
 class FundTypeChooseActivity: AppCompatActivity() {
 
@@ -16,6 +17,10 @@ class FundTypeChooseActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fund_type_choose_activity)
+
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            finish()
+        })
 
         fundView = ApplicationState.FundCreationState.fundView ?: FundView()
         ApplicationState.FundCreationState.fundView = fundView
@@ -29,6 +34,7 @@ class FundTypeChooseActivity: AppCompatActivity() {
         }
         fundView.type = fundType
 
+        val intent = Intent(this, FundInfoEditActivity::class.java)
         startActivity(intent)
     }
 }
