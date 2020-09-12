@@ -3,7 +3,7 @@
     <string name="main_placeholder">У Вас пока нет сборов.\nНачните доброе дело.</string>
     <string name="main_btn">Создать сбор</string>
     <string name="fundsActivityHeaderTitle">Пожертвования</string>
-    <string name="fundTypeActivityHeaderTitle">Пожертвования</string>
+    <string name="fundTypeActivityHeaderTitle">Тип сбора</string>
     <string name="targetFundTitle">Целевой сбор</string>
     <string name="targetFundDescription">Когда есть определённая цель</string>
     <string name="regularFundTitle">Регулярный сбор</string>
