@@ -1,6 +1,9 @@
 package com.vk.vezdecode
 
+import android.R.attr
+import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,10 +11,17 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.vk.vezdecode.Constants.PICK_IMAGE
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
+<<<<<<< Updated upstream
 import java.lang.IllegalStateException
+=======
+import java.io.BufferedInputStream
+import java.io.InputStream
+
+>>>>>>> Stashed changes
 
 class FundInfoEditActivity : AppCompatActivity() {
 
@@ -48,6 +58,36 @@ class FundInfoEditActivity : AppCompatActivity() {
 
         listOf(nameEditText, priceEditText, goalEditText, descriptionEditText)
             .forEach { it.addTextChangedListener(createInfoEditTextWatcher(it)) }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            if (data!!.data != null) {
+                val uri = data!!.data
+                val inputStream: InputStream = contentResolver.openInputStream(uri!!)!!
+                val bufferedInputStream = BufferedInputStream(inputStream);
+                val bmp = BitmapFactory.decodeStream(bufferedInputStream);
+
+                imageView.setImageBitmap(bmp)
+                loadedImageLayout.visibility = View.VISIBLE
+                requestingImageLayout.visibility = View.GONE
+            }
+            //Now you can do whatever you want with your inpustream, save it as file, upload to a server, decode a bitmap...
+        }
+    }
+
+    fun onPickImageClick(view: View) {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+    }
+
+    fun onRemoveImageClick(view: View) {
+        loadedImageLayout.visibility = View.GONE
+        requestingImageLayout.visibility = View.VISIBLE
     }
 
     fun onInfoEditTextChanged(editText: EditText, textBefore: String?) {
