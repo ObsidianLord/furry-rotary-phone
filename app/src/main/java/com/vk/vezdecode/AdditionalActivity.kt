@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundEndsCondition
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.additional_activity.*
+import kotlinx.android.synthetic.main.additional_activity.buttonNext
+import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import java.lang.IllegalStateException
 import java.util.*
 
@@ -23,6 +25,10 @@ class AdditionalActivity : AppCompatActivity() {
         setContentView(R.layout.additional_activity)
 
         fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
+
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            finish()
+        })
     }
 
     fun onFundCreateButtonClicked(view: View) {
