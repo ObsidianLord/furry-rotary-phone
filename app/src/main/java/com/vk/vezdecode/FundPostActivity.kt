@@ -35,12 +35,12 @@ class FundPostActivity : AppCompatActivity() {
         authorTextView.text =
             resources.getString(R.string.post_author_format).format(fundView.author)
 
-        fundView.fundEndsDate?.let { fundsEndDate ->
-            fundEndsInTextView.text = fundView.fundEndsDate?.let { fundEndsDate ->
-                resources.getString(R.string.fund_until_date_format)
-                    .format((fundEndsDate.day.toString() + " " + monthToName(fundEndsDate.month)))
-            } ?: ""
-        }
+        val untilFormatted = fundView.fundEndsDate?.let { fundEndsDate ->
+            resources.getString(R.string.fund_until_date_format)
+                .format((fundEndsDate.day.toString() + " " + monthToName(fundEndsDate.month)))
+        } ?: ""
+        fundEndsInTextView.text = untilFormatted
+        textView10.text = untilFormatted
 
         fundedTextView1.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(ApplicationState.CurrentFundState.currentFundMoney ?: 0), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price))
 
