@@ -14,6 +14,8 @@
         <item>Счёт VK Pay * 228</item>
     </string-array>
 
+    <string name="create_fund">Создать сбор</string>
+
     <string name="snippet_author">Матвей Правосудов</string>
     <string name="new_date">час назад</string>
     <string name="new_text">Сейчас самое время помочь тем, кто не может попросить о помощи сам.</string>

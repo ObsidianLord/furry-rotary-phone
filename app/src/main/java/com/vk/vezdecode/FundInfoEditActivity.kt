@@ -40,11 +40,13 @@ class FundInfoEditActivity : AppCompatActivity() {
             when (fundView.type) {
                 FundType.TARGET -> {
                     headerToolbar.title = "Целевой сбор"
+                    buttonNext.text = "Далее"
                     authorLayout.visibility = View.GONE
                 }
 
                 FundType.REGULAR -> {
                     headerToolbar.title = "Регулярный сбор"
+                    buttonNext.text = resources.getString(R.string.create_fund)
                     authorLayout.visibility = View.VISIBLE
                 }
             }
