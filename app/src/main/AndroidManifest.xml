@@ -36,6 +36,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FundTypeChooseActivity" />
         </activity>
+
+        <activity
+            android:name=".AdditionalActivity"
+            android:parentActivityName=".FundInfoEditActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FundInfoEditActivity" />
+        </activity>
     </application>
 
 </manifest>
