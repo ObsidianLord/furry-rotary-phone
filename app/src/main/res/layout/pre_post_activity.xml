@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -11,10 +12,13 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:elevation="0dp"
+            app:elevation="0dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
 
@@ -36,17 +40,31 @@
                     android:onClick="onFundPostButtonClick"
                     />
             </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingLeft="16dp"
+                android:paddingEnd="16dp"
+                android:paddingRight="16dp">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider_bg" />
+            </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <EditText
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minLines="3"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="#00000000"
-            android:textCursorDrawable="@drawable/cursor_color"
-            />
+            android:minLines="3"
+            android:textCursorDrawable="@drawable/cursor_color" />
 
         <include layout="@layout/snippet" />
 

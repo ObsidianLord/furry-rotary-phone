@@ -11,6 +11,12 @@
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">#FFFFFF</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="android:textSize">23dp</item>
+        <item name="android:lineHeight">28dp</item>
+        <item name="android:fontWeight">800</item>
+        <item name="android:textFontWeight">800</item>
+    </style>
 
     <style name="NoActionBar">
         <item name="windowActionBar">false</item>
