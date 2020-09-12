@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".FundsActivity">
+        <activity android:name=".FundsActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +24,8 @@
 
         <activity
             android:name=".FundTypeChooseActivity"
-            android:parentActivityName=".FundsActivity">
+            android:parentActivityName=".FundsActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FundsActivity" />
@@ -31,7 +33,8 @@
 
         <activity
             android:name=".FundInfoEditActivity"
-            android:parentActivityName=".FundTypeChooseActivity">
+            android:parentActivityName=".FundTypeChooseActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FundTypeChooseActivity" />
@@ -39,7 +42,8 @@
 
         <activity
             android:name=".AdditionalActivity"
-            android:parentActivityName=".FundInfoEditActivity">
+            android:parentActivityName=".FundInfoEditActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FundInfoEditActivity" />

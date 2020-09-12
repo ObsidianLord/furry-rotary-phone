@@ -45,9 +45,11 @@
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/requestingImageLayout"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     android:minHeight="160dp"
+                    android:onClick="onPickImageClick"
                     android:background="@drawable/dotted_border">
 
                     <LinearLayout
@@ -81,6 +83,30 @@
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:id="@+id/loadedImageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:visibility="gone"
+                    >
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+
+                        android:onClick="onRemoveImageClick"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="top|right"/>
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
