@@ -22,10 +22,10 @@ class PrePostActivity : AppCompatActivity() {
         toolbar.title = fundView.author?.let { it.split(" ")[0] }
 
         nameTextView.text = fundView.name
-        // TODO
         if (fundView.image != null) {
             thumbnailImageView.setImageBitmap(fundView.image)
         }
+        // TODO
         shortDescriptionTextView.text = resources.getString(R.string.snippet_short_description_format).format(fundView.name, 5)
 
         fundedTextView.text = resources.getString(R.string.snippet_funded_format).format("0 Р", fundView.price.toString() + " Р")
