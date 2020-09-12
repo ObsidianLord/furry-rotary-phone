@@ -61,7 +61,7 @@ class FundPostActivity : AppCompatActivity() {
                 i += 1
                 updateProgress(i)
             }
-        }, 0L, 200, TimeUnit.MILLISECONDS)
+        }, 0L, 1, TimeUnit.SECONDS)
     }
 
 
@@ -81,8 +81,8 @@ class FundPostActivity : AppCompatActivity() {
 
 
             val currentProgress = (fundView.price!! * i / 100).toInt()
-            textViewLeft.text = currentProgress.toString()
-            textViewRight.text = currentProgress.toString()
+            textViewLeft.text = Constants.RUSSIAN_PRICE_FORMAT.format(currentProgress)
+            textViewRight.text = Constants.RUSSIAN_PRICE_FORMAT.format(currentProgress)
             fundedTextView1.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(currentProgress), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price!!))
 
             val testPaint = Paint()
