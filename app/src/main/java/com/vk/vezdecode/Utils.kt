@@ -1,5 +1,6 @@
 package com.vk.vezdecode
 
+import java.lang.IllegalStateException
 import java.util.*
 
 object Utils {
@@ -17,6 +18,24 @@ object Utils {
 
             (daysUntilEnd + hoursUntilEnd + minutesUntilEnd) < 0 -> ""
             else -> ""
+        }
+    }
+
+    fun monthToName(month: Int): String {
+        return when(month) {
+            0 -> "января"
+            1 -> "февряля"
+            2 -> "марта"
+            3 -> "апреля"
+            4 -> "май"
+            5 -> "июня"
+            6 -> "июля"
+            7 -> "августа"
+            8 -> "сентября"
+            9 -> "октября"
+            10 -> "ноября"
+            11 -> "декабря"
+            else -> throw IllegalStateException()
         }
     }
 }

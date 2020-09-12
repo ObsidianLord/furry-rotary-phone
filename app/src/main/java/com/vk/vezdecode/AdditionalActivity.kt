@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import com.vk.vezdecode.Utils.monthToName
 import com.vk.vezdecode.model.FundEndsCondition
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.additional_activity.*
@@ -54,8 +55,8 @@ class AdditionalActivity : AppCompatActivity() {
 
     private fun setDateAndEnableButton(year: Int, monthOfYear: Int, dayOfMonth: Int) {
         val datStr = if (dayOfMonth > 9) dayOfMonth.toString() else "0${dayOfMonth}"
-        val monthStr = if (monthOfYear > 8) (monthOfYear + 1).toString() else "0${monthOfYear + 1}"
-        dateTextView.text = "${datStr}.${monthStr}.${year}"
+        val monthStr =  monthToName(monthOfYear)
+        dateTextView.text = "$datStr $monthStr $year"
         buttonNext.isEnabled = true
     }
 
