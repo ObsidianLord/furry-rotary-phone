@@ -20,4 +20,9 @@
     <string name="snippet_subtitle">Матвей Правосудов • Закончится через 5 дней</string>
     <string name="snippet_raised">Собрано 8 750 ₽ из 10 000 ₽</string>
     <string name="snippet_help">Помочь</string>
+
+    <string-array name="authorNames">
+        <item>Матвей Правосудов</item>
+        <item>Кирилл Левосудов</item>
+    </string-array>
 </resources>
