@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.Constants.RUSSIAN_PRICE_FORMAT
 import com.vk.vezdecode.Utils.datesToDifferenceText
 import com.vk.vezdecode.vo.FundView
+import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import kotlinx.android.synthetic.main.pre_post_activity.*
 import kotlinx.android.synthetic.main.snippet.*
 import java.lang.IllegalStateException
@@ -27,6 +28,8 @@ class PrePostActivity : AppCompatActivity() {
             ApplicationState.CurrentFundState.currentFundMoney = 0
             ApplicationState.CurrentFundState.fundView = fundView
         }
+
+        toolbar.setNavigationOnClickListener { finish() }
 
         toolbar.title = fundView.author?.let { it.split(" ")[0] }
 
