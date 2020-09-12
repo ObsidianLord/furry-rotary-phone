@@ -52,6 +52,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".AdditionalActivity" />
         </activity>
+
+        <activity
+            android:name=".FundPostActivity"
+            android:parentActivityName=".PrePostActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PrePostActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 package com.vk.vezdecode
 
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundEndsCondition
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.additional_activity.*
-import kotlinx.android.synthetic.main.additional_activity.buttonNext
-import java.lang.IllegalStateException
 import java.util.*
 
 

@@ -25,13 +25,15 @@
                 >
 
                 <ImageView
-                    android:id="@+id/toolbar_logo"
+                    android:id="@+id/toolbarPostFundImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:paddingRight="10dp"
                     android:layout_gravity="end"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_check"
+
+                    android:onClick="onFundPostButtonClick"
                     />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
