@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
-import kotlinx.android.synthetic.main.funds_activity.*
 import java.lang.IllegalStateException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -26,8 +25,14 @@ class FundInfoEditActivity : AppCompatActivity() {
         setContentView(R.layout.fund_info_edit_activity)
 
         fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
+        if (!fundView.name.isNullOrEmpty() && fundView.price != null) {
+            val price = fundView.price ?: -1
+            buttonNext.isEnabled = price > 0
+        } else {
+            buttonNext.isEnabled = false
+        }
 
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
+        headerToolbar.setNavigationOnClickListener(View.OnClickListener {
             finish()
         })
 
@@ -35,7 +40,7 @@ class FundInfoEditActivity : AppCompatActivity() {
             when (fundView.type) {
                 FundType.TARGET -> {
                     headerToolbar.title = "Целевой сбор"
-                    authorLayout.visibility = View.INVISIBLE
+                    authorLayout.visibility = View.GONE
                 }
 
                 FundType.REGULAR -> {
@@ -84,8 +89,6 @@ class FundInfoEditActivity : AppCompatActivity() {
             R.id.priceEditText -> {
                 if (text.matches(Regex("\\d+"))) {
                     fundView.price = text.toInt()
-                    /*editText.setText(priceFormat.format(price))*/
-                    return
                 }
 
                 /*try {
@@ -96,6 +99,12 @@ class FundInfoEditActivity : AppCompatActivity() {
             }
             R.id.goalEditText -> fundView.goal = text
             R.id.descriptionEditText -> fundView.description = text
+        }
+        if (!fundView.name.isNullOrEmpty() && fundView.price != null) {
+            val price = fundView.price ?: -1
+            buttonNext.isEnabled = price > 0
+        } else {
+            buttonNext.isEnabled = false
         }
     }
 
