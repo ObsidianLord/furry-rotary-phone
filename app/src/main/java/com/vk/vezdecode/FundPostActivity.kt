@@ -28,7 +28,7 @@ class FundPostActivity : AppCompatActivity() {
                 .format(datesToDifferenceText(Date(), fundEndsDate))
         } ?: ""
 
-        fundedTextView.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(ApplicationState.CurrentFundState.currentFundMoney), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price))
+        fundedTextView1.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(ApplicationState.CurrentFundState.currentFundMoney ?: 0), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price))
 
         descriptionTextView.text = fundView.description
     }
