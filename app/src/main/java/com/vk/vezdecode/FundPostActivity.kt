@@ -28,7 +28,7 @@ class FundPostActivity : AppCompatActivity() {
         fundView = ApplicationState.CurrentFundState.fundView ?: throw IllegalStateException()
 
         if (fundView.image != null) {
-            thumbnailImageView.setImageBitmap(fundView.image)
+            imageView2.setImageBitmap(fundView.image)
         }
 
         nameTextView.text = fundView.name
