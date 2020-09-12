@@ -137,8 +137,6 @@
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:background="@drawable/round_edittext"
-
-                        android:onClick="beforeInfoEditTextChange"
                         />
                 </LinearLayout>
 
@@ -167,8 +165,6 @@
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:background="@drawable/round_edittext"
-
-                        android:onClick="beforeInfoEditTextChange"
                         />
                 </LinearLayout>
 
@@ -197,8 +193,6 @@
                         android:layout_height="wrap_content"
                         android:textCursorDrawable="@drawable/cursor_color"
                         android:background="@drawable/round_edittext"
-
-                        android:onClick="beforeInfoEditTextChange"
                         />
                 </LinearLayout>
 
