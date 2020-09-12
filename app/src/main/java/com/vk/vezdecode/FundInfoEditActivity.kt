@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
+import kotlinx.android.synthetic.main.funds_activity.*
 import java.lang.IllegalStateException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -25,6 +26,10 @@ class FundInfoEditActivity : AppCompatActivity() {
         setContentView(R.layout.fund_info_edit_activity)
 
         fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
+
+        toolbar.setNavigationOnClickListener(View.OnClickListener {
+            finish()
+        })
 
         run {
             when (fundView.type) {
