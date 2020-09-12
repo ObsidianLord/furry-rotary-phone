@@ -565,7 +565,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
                         android:letterSpacing="-0.02"
-                        android:text="@string/snippet_raised"
+                        android:text="@string/snippet_funded_format"
                         android:textColor="@color/colorBlackText"
                         android:textSize="14dp"
                         app:lineHeight="18dp" />

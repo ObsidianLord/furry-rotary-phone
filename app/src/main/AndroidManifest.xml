@@ -44,6 +44,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FundInfoEditActivity" />
         </activity>
+
+        <activity
+            android:name=".PrePostActivity"
+            android:parentActivityName=".AdditionalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdditionalActivity" />
+        </activity>
     </application>
 
 </manifest>

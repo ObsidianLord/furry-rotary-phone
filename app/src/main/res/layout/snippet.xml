@@ -29,7 +29,7 @@
             app:cardElevation="0dp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/thumbnailImageView"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:scaleType="centerCrop"
@@ -76,7 +76,7 @@
                 android:scrollbarSize="0dp">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/nameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -89,12 +89,12 @@
                     app:lineHeight="20dp" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/shortDescriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:letterSpacing="-0.01"
-                    android:text="@string/snippet_subtitle"
+                    android:text="@string/snippet_short_description_format"
                     android:textColor="@color/colorPlaceholder"
                     android:textSize="13dp"
                     app:lineHeight="16dp" />
@@ -120,12 +120,12 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView8"
+                            android:id="@+id/fundedTextView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
                             android:letterSpacing="-0.01"
-                            android:text="@string/snippet_raised"
+                            android:text="@string/snippet_funded_format"
                             android:textColor="@color/colorBlackText"
                             android:textSize="13dp"
                             app:lineHeight="16dp" />
@@ -157,7 +157,7 @@
                     </LinearLayout>
 
                     <Button
-                        android:id="@+id/button4"
+                        android:id="@+id/helpButton"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

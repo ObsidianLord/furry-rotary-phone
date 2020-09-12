@@ -5,13 +5,13 @@ import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundEndsCondition
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.additional_activity.*
 import kotlinx.android.synthetic.main.additional_activity.buttonNext
-import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import java.lang.IllegalStateException
 import java.util.*
 
@@ -26,9 +26,9 @@ class AdditionalActivity : AppCompatActivity() {
 
         fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
 
-        toolbar.setNavigationOnClickListener(View.OnClickListener {
-            finish()
-        })
+        authorSpinner.onItemSelectedListener = onAuthorSpinnerItemSelectedListener()
+
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     fun onFundCreateButtonClicked(view: View) {
@@ -86,4 +86,23 @@ class AdditionalActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun onButtonNextClick(view: View) {
+        val intent = Intent(this, PrePostActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun onAuthorSpinnerItemSelectedListener() =
+        object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?, view: View?,
+                position: Int, id: Long
+            ) {
+                fundView.author = resources.getStringArray(R.array.authorNames)[position]
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
 }

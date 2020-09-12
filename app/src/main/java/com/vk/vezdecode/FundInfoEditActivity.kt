@@ -5,16 +5,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.AdapterView
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import java.lang.IllegalStateException
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.text.ParseException
-import java.util.*
 
 class FundInfoEditActivity : AppCompatActivity() {
 
@@ -32,51 +29,28 @@ class FundInfoEditActivity : AppCompatActivity() {
             buttonNext.isEnabled = false
         }
 
-        headerToolbar.setNavigationOnClickListener(View.OnClickListener {
-            finish()
-        })
+        headerToolbar.setNavigationOnClickListener { finish() }
 
         run {
             when (fundView.type) {
                 FundType.TARGET -> {
-                    headerToolbar.title = "Целевой сбор"
-                    buttonNext.text = "Далее"
+                    headerToolbar.title = resources.getString(R.string.targetFundTitle)
                     authorLayout.visibility = View.GONE
                 }
 
                 FundType.REGULAR -> {
-                    headerToolbar.title = "Регулярный сбор"
-                    buttonNext.text = resources.getString(R.string.create_fund)
+                    headerToolbar.title = resources.getString(R.string.regularFundTitle)
                     authorLayout.visibility = View.VISIBLE
-                }
-            }
-        }
-
-        fun createTextWatcher(editText: EditText): TextWatcher {
-            var textBefore: String? = null
-
-            return object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int, count: Int, after: Int
-                ) {
-                    textBefore = s?.toString()
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    beforeInfoEditTextChange(editText, textBefore)
-                }
-
-                override fun afterTextChanged(s: Editable) {
+                    authorSpinner.onItemSelectedListener = createAuthorSpinnerItemSelectedListener()
                 }
             }
         }
 
         listOf(nameEditText, priceEditText, goalEditText, descriptionEditText)
-            .forEach { editText -> editText.addTextChangedListener(createTextWatcher(editText)) }
+            .forEach { it.addTextChangedListener(createInfoEditTextWatcher(it)) }
     }
 
-    fun beforeInfoEditTextChange(editText: EditText, textBefore: String?) {
+    fun onInfoEditTextChanged(editText: EditText, textBefore: String?) {
         val text = editText.text?.toString()
         if (text.isNullOrEmpty()) {
             return
@@ -111,7 +85,46 @@ class FundInfoEditActivity : AppCompatActivity() {
     }
 
     fun onButtonNextClick(view: View) {
-        val intent = Intent(this, AdditionalActivity::class.java)
+
+        val activityClass = when(fundView.type) {
+            FundType.TARGET -> AdditionalActivity::class.java
+            FundType.REGULAR -> PrePostActivity::class.java
+            else -> throw IllegalStateException()
+        }
+        val intent = Intent(this, activityClass)
+
         startActivity(intent)
+    }
+
+    private fun createAuthorSpinnerItemSelectedListener() =
+        object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?, view: View?,
+                position: Int, id: Long
+            ) {
+                fundView.author = resources.getStringArray(R.array.authorNames)[position]
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
+    private fun createInfoEditTextWatcher(editText: EditText) = object : TextWatcher {
+        var textBefore: String? = null
+
+        override fun beforeTextChanged(
+            s: CharSequence?,
+            start: Int, count: Int, after: Int
+        ) {
+            textBefore = s?.toString()
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            onInfoEditTextChanged(editText, textBefore)
+        }
+
+        override fun afterTextChanged(s: Editable) {
+        }
     }
 }

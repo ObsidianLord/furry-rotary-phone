@@ -55,7 +55,7 @@
                 </TextView>
 
                 <Spinner
-                    android:id="@+id/spinnerAuthor"
+                    android:id="@+id/authorSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="40dp"
@@ -143,6 +143,8 @@
         android:textColor="#ffffff"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
+
+        android:onClick="onButtonNextClick"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
