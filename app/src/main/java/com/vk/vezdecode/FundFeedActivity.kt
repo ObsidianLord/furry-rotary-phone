@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_feed_activity.*
 import kotlinx.android.synthetic.main.snippet.*
+import java.util.*
 
 class FundFeedActivity : AppCompatActivity() {
 
@@ -21,19 +22,24 @@ class FundFeedActivity : AppCompatActivity() {
         authorName.text = fundView.author
 
         nameTextView.text = fundView.name
+
         if (fundView.image != null) {
             thumbnailImageView.setImageBitmap(fundView.image)
         }
-        // TODO
-        shortDescriptionTextView.text = resources.getString(R.string.snippet_short_description_format).format(fundView.name, 5)
 
-        fundedTextView.text = resources.getString(R.string.snippet_funded_format).format("0 Р", fundView.price.toString() + " Р")
+        val timeUntilString = fundView.fundEndsDate?.let { Utils.datesToDifferenceText(Date(), it) }
+        shortDescriptionTextView.text = if (timeUntilString == null) {
+            fundView.author
+        } else {
+            resources.getString(R.string.snippet_short_description_format)
+                .format(fundView.author, timeUntilString)
+        }
+
+        fundedTextView.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(ApplicationState.CurrentFundState.currentFundMoney), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price))
 
         thumbnailImageView.setOnClickListener(startFundPostActivityOnClickViewListener())
-
         nameTextView.setOnClickListener(startFundPostActivityOnClickViewListener())
         shortDescriptionTextView.setOnClickListener(startFundPostActivityOnClickViewListener())
-
         helpButton.setOnClickListener(startFundPostActivityOnClickViewListener())
     }
 

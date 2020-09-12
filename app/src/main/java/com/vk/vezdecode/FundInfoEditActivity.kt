@@ -12,12 +12,18 @@ import android.widget.AdapterView
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.Constants.PICK_IMAGE
+import com.vk.vezdecode.Constants.RUBLE_CHARACTER
+import com.vk.vezdecode.Constants.RUSSIAN_PRICE_FORMAT
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import java.lang.IllegalStateException
 import java.io.BufferedInputStream
 import java.io.InputStream
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.text.ParseException
+import java.util.*
 
 class FundInfoEditActivity : AppCompatActivity() {
 
@@ -96,35 +102,63 @@ class FundInfoEditActivity : AppCompatActivity() {
 
         if (text.isBlank()) {
             editText.setText("")
+            return
+        }
+
+        if (text == textBefore) {
+            return
         }
 
         when (editText.id) {
             R.id.nameEditText -> fundView.name = text
             R.id.priceEditText -> {
-                if (text.matches(Regex("\\d+"))) {
-                    fundView.price = text.toInt()
+
+                if (text.toString().contains(Regex("[^0-9 $RUBLE_CHARACTER]"))) {
+                    editText.setText(textBefore)
+                    return
                 }
 
-                /*try {
-                    price = priceFormat.parse(text)!!.toInt()
-                } catch (ex: ParseException) {
+                if (text.length > 13) {
                     editText.setText(textBefore)
-                }*/
+                    return
+                }
+
+                try {
+                    fundView.price = RUSSIAN_PRICE_FORMAT.parse(text)!!.toLong()
+                    editText.setText(RUSSIAN_PRICE_FORMAT.format(fundView.price!!))
+                } catch (ex: ParseException) {
+                    if (text.matches(Regex("^\\s*\\d+\\s*$"))) {
+                        fundView.price = text.trim().toLong()
+                        editText.setText(RUSSIAN_PRICE_FORMAT.format(fundView.price!!))
+                    } else if (text.length < (textBefore?.length ?: 0)) {
+                        if (textBefore!!.matches(Regex("\\d $RUBLE_CHARACTER"))) {
+                            fundView.price = null
+                            editText.text = null
+                        } else {
+                            editText.setText(textBefore)
+                        }
+                        return
+                    }
+                }
+
+                editText.setSelection(editText.text.toString().length - 2)
             }
             R.id.goalEditText -> fundView.goal = text
             R.id.descriptionEditText -> fundView.description = text
         }
-        if (!fundView.name.isNullOrEmpty() && fundView.price != null) {
-            val price = fundView.price ?: -1
-            buttonNext.isEnabled = price > 0
-        } else {
-            buttonNext.isEnabled = false
+
+        run {
+            val nameFilled = !fundView.name.isNullOrBlank()
+            val priceFilled = (fundView.price != null)
+
+
+            buttonNext.isEnabled = nameFilled && priceFilled
         }
     }
 
     fun onButtonNextClick(view: View) {
 
-        val activityClass = when(fundView.type) {
+        val activityClass = when (fundView.type) {
             FundType.TARGET -> AdditionalActivity::class.java
             FundType.REGULAR -> PrePostActivity::class.java
             else -> throw IllegalStateException()

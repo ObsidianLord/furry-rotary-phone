@@ -42,6 +42,7 @@ class AdditionalActivity : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             { view_, year, monthOfYear, dayOfMonth ->
+                fundView.fundEndsDate = Date(year - 1900, monthOfYear, dayOfMonth)
                 setDateAndEnableButton(year, monthOfYear, dayOfMonth)
             },
             mYear,

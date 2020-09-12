@@ -66,7 +66,7 @@
                 android:scrollbarSize="0dp">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/nameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -79,27 +79,27 @@
                     app:lineHeight="28dp" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/authorTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto"
                     android:fontWeight="500"
                     android:letterSpacing="-0.02"
-                    android:text="@string/post_author"
+                    android:text="@string/post_author_format"
                     android:textColor="#6D7885"
                     android:textFontWeight="500"
                     android:textSize="14dp"
                     app:lineHeight="18dp" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/fundEndsInTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto"
                     android:letterSpacing="-0.01"
-                    android:text="@string/post_left"
+                    android:text="@string/post_time_left_format"
                     android:textColor="@color/colorPlaceholder"
                     android:textSize="13dp"
                     app:lineHeight="16dp" />
@@ -118,7 +118,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
                     android:letterSpacing="-0.02"
-                    android:text="@string/post_till"
+                    android:text="@string/fund_until_date_format"
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp"
                     app:lineHeight="18dp" />
@@ -160,7 +160,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:fontWeight="600"
                                     android:letterSpacing="-0.01"
-                                    android:text="@string/post_current"
+                                    android:text="@string/fund_current_money"
                                     android:textColor="@color/colorPrimaryText"
                                     android:textFontWeight="600"
                                     android:textSize="14dp"
@@ -179,7 +179,7 @@
                             android:fontFamily="@font/roboto"
                             android:fontWeight="500"
                             android:letterSpacing="-0.01"
-                            android:text="@string/post_goal"
+                            android:text="@string/fund_goal"
                             android:textColor="@color/colorPlaceholder"
                             android:textFontWeight="500"
                             android:textSize="14dp"
@@ -198,13 +198,13 @@
                     android:background="@drawable/divider_bg" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/roboto"
                     android:letterSpacing="-0.025"
-                    android:text="@string/post_body"
+                    android:text="@string/fund_description"
                     android:textColor="@color/colorBlackText"
                     android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
