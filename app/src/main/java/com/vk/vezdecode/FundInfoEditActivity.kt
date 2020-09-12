@@ -15,13 +15,9 @@ import com.vk.vezdecode.Constants.PICK_IMAGE
 import com.vk.vezdecode.model.FundType
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
-<<<<<<< Updated upstream
 import java.lang.IllegalStateException
-=======
 import java.io.BufferedInputStream
 import java.io.InputStream
-
->>>>>>> Stashed changes
 
 class FundInfoEditActivity : AppCompatActivity() {
 
@@ -69,6 +65,8 @@ class FundInfoEditActivity : AppCompatActivity() {
                 val inputStream: InputStream = contentResolver.openInputStream(uri!!)!!
                 val bufferedInputStream = BufferedInputStream(inputStream);
                 val bmp = BitmapFactory.decodeStream(bufferedInputStream);
+
+                fundView.image = bmp
 
                 imageView.setImageBitmap(bmp)
                 loadedImageLayout.visibility = View.VISIBLE
