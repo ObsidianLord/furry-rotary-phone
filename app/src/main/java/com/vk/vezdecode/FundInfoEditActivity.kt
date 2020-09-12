@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.model.FundType
+import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_info_edit_activity.*
 import java.lang.IllegalStateException
 import java.text.DecimalFormat
@@ -20,6 +21,8 @@ class FundInfoEditActivity : AppCompatActivity() {
     companion object {
         private const val RUBLE_CHARACTER = '₽'
     }
+
+    private lateinit var fundView: FundView
 
     private lateinit var fundType: FundType
 
@@ -35,12 +38,10 @@ class FundInfoEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fund_info_edit_activity)
 
-        fundType = intent.getStringExtra(Constants.IntentExtra.FUND_TYPE)
-            ?.let { FundType.valueOf(it) }
-            ?: throw IllegalStateException()
+        fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
 
         run {
-            when(fundType) {
+            when(fundView.type) {
                 FundType.TARGET -> {
                     headerToolbar.title = "Целевой сбор"
                 }
