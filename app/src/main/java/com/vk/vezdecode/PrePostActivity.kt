@@ -32,7 +32,7 @@ class PrePostActivity : AppCompatActivity() {
     }
 
     fun onFundPostButtonClick(view: View) {
-        val intent = Intent(this, FundPostActivity::class.java)
+        val intent = Intent(this, FundFeedActivity::class.java)
         startActivity(intent)
     }
 }

@@ -58,11 +58,19 @@
         </activity>
 
         <activity
-            android:name=".FundPostActivity"
+            android:name=".FundFeedActivity"
             android:parentActivityName=".PrePostActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".PrePostActivity" />
+        </activity>
+
+        <activity
+            android:name=".FundPostActivity"
+            android:parentActivityName=".FundFeedActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FundFeedActivity" />
         </activity>
     </application>
 
