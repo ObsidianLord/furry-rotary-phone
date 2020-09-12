@@ -6,8 +6,12 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.vk.vezdecode.Utils.datesToDifferenceText
+import com.vk.vezdecode.Utils.monthToName
 import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.fund_post_activity.*
+import kotlinx.android.synthetic.main.fund_post_activity.nameTextView
+import kotlinx.android.synthetic.main.fund_post_activity.progressBar
+import kotlinx.android.synthetic.main.snippet.*
 import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.ThreadFactory
@@ -21,16 +25,22 @@ class FundPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fund_post_activity)
 
-        fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
+        fundView = ApplicationState.CurrentFundState.fundView ?: throw IllegalStateException()
+
+        if (fundView.image != null) {
+            thumbnailImageView.setImageBitmap(fundView.image)
+        }
 
         nameTextView.text = fundView.name
         authorTextView.text =
             resources.getString(R.string.post_author_format).format(fundView.author)
 
-        fundEndsInTextView.text = fundView.fundEndsDate?.let { fundEndsDate ->
-            resources.getString(R.string.fund_until_date_format)
-                .format(datesToDifferenceText(Date(), fundEndsDate))
-        } ?: ""
+        fundView.fundEndsDate?.let { fundsEndDate ->
+            fundEndsInTextView.text = fundView.fundEndsDate?.let { fundEndsDate ->
+                resources.getString(R.string.fund_until_date_format)
+                    .format((fundEndsDate.day.toString() + " " + monthToName(fundEndsDate.month)))
+            } ?: ""
+        }
 
         fundedTextView1.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(ApplicationState.CurrentFundState.currentFundMoney ?: 0), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price))
 
