@@ -28,7 +28,7 @@
                 app:navigationIcon="?attr/homeAsUpIndicator"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
                 android:theme="@style/ToolbarColoredBackArrow"
-                app:title="Пожертвования"
+                app:title="@string/additionalFundInfoTitle"
                 />
         </com.google.android.material.appbar.AppBarLayout>
 
