@@ -22,7 +22,7 @@ class FundTypeChooseActivity: AppCompatActivity() {
             finish()
         })
 
-        fundView = ApplicationState.FundCreationState.fundView ?: FundView()
+        fundView = FundView()
         ApplicationState.FundCreationState.fundView = fundView
     }
 

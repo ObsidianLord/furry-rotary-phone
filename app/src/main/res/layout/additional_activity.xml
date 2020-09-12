@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <RadioButton android:id="@+id/radioEndBySum"
+                <RadioButton android:id="@+id/radioEndsOnSumFunded"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/RadioButtonStyle"
@@ -85,7 +85,7 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="15dp"/>
-                <RadioButton android:id="@+id/radioEndByDate"
+                <RadioButton android:id="@+id/radioEndsAtExactDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:theme="@style/RadioButtonStyle"

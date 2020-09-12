@@ -7,13 +7,13 @@ import java.time.LocalDate
 data class FundView(
     var type: FundType? = null,
 
-    val thumbnailFilePath: String? = null,
-    val name: String? = null,
-    val price: Int? = null,
-    val goal: String? = null,
-    val description: String? = null,
-    val accountPaymentName: String? = null,
-    val author: String? = null,
+    var thumbnailFilePath: String? = null,
+    var name: String? = null,
+    var price: Int? = null,
+    var goal: String? = null,
+    var description: String? = null,
+    var accountPaymentName: String? = null,
+    var author: String? = null,
 
     var fundEndsCondition: FundEndsCondition? = null,
     var fundEndsDate: LocalDate? = null

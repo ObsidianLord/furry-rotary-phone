@@ -7,15 +7,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import com.vk.vezdecode.model.FundEndsCondition
+import com.vk.vezdecode.vo.FundView
 import kotlinx.android.synthetic.main.additional_activity.*
-import kotlinx.android.synthetic.main.funds_activity.*
+import java.lang.IllegalStateException
 import java.util.*
 
 
 class AdditionalActivity : AppCompatActivity() {
+
+    private lateinit var fundView: FundView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.additional_activity)
+
+        fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
     }
 
     fun onFundCreateButtonClicked(view: View) {
@@ -29,10 +36,11 @@ class AdditionalActivity : AppCompatActivity() {
         val mMonth = c[Calendar.MONTH]
         val mDay = c[Calendar.DAY_OF_MONTH]
 
-
         val datePickerDialog = DatePickerDialog(
             this,
-            OnDateSetListener { view_, year, monthOfYear, dayOfMonth -> setDateAndEnableButton(year, monthOfYear, dayOfMonth)},
+            { view_, year, monthOfYear, dayOfMonth ->
+                setDateAndEnableButton(year, monthOfYear, dayOfMonth)
+            },
             mYear,
             mMonth,
             mDay
@@ -49,21 +57,26 @@ class AdditionalActivity : AppCompatActivity() {
 
     fun onRadioButtonClicked(view: View) {
         if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
+            fundView.fundEndsCondition = when (view.getId()) {
+                R.id.radioEndsOnSumFunded -> FundEndsCondition.ON_SUM_FUNDED
+                R.id.radioEndsAtExactDate -> FundEndsCondition.AT_EXACT_DATE
+                else -> throw IllegalStateException()
+            }
 
             // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.radioEndBySum ->
-                    if (checked) {
+            val checked = view.isChecked
+            if (checked) {
+                when (fundView.fundEndsCondition) {
+                    FundEndsCondition.ON_SUM_FUNDED -> {
                         calendarDateLayout.visibility = View.INVISIBLE
                         buttonNext.isEnabled = true
                     }
-                R.id.radioEndByDate ->
-                    if (checked) {
+
+                    FundEndsCondition.AT_EXACT_DATE -> {
                         calendarDateLayout.visibility = View.VISIBLE
                         buttonNext.isEnabled = dateTextView.text.isNotEmpty()
                     }
+                }
             }
         }
     }

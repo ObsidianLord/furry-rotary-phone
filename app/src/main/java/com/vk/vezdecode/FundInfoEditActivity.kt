@@ -18,21 +18,7 @@ import java.util.*
 
 class FundInfoEditActivity : AppCompatActivity() {
 
-    companion object {
-        private const val RUBLE_CHARACTER = '₽'
-    }
-
     private lateinit var fundView: FundView
-
-    private lateinit var fundType: FundType
-
-    private var name: String? = null
-
-    private var price: Int? = null
-
-    private var goal: String? = null
-
-    private var description: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +27,15 @@ class FundInfoEditActivity : AppCompatActivity() {
         fundView = ApplicationState.FundCreationState.fundView ?: throw IllegalStateException()
 
         run {
-            when(fundView.type) {
+            when (fundView.type) {
                 FundType.TARGET -> {
                     headerToolbar.title = "Целевой сбор"
+                    authorLayout.visibility = View.INVISIBLE
                 }
 
                 FundType.REGULAR -> {
                     headerToolbar.title = "Регулярный сбор"
+                    authorLayout.visibility = View.VISIBLE
                 }
             }
         }
@@ -87,10 +75,10 @@ class FundInfoEditActivity : AppCompatActivity() {
         }
 
         when (editText.id) {
-            R.id.nameEditText -> name = text
+            R.id.nameEditText -> fundView.name = text
             R.id.priceEditText -> {
                 if (text.matches(Regex("\\d+"))) {
-                    price = text.toInt()
+                    fundView.price = text.toInt()
                     /*editText.setText(priceFormat.format(price))*/
                     return
                 }
@@ -101,8 +89,8 @@ class FundInfoEditActivity : AppCompatActivity() {
                     editText.setText(textBefore)
                 }*/
             }
-            R.id.goalEditText -> goal = text
-            R.id.descriptionEditText -> description = text
+            R.id.goalEditText -> fundView.goal = text
+            R.id.descriptionEditText -> fundView.description = text
         }
     }
 

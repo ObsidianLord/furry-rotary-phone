@@ -224,10 +224,13 @@
                         android:background="@drawable/round_dropdown"
                         android:dropDownWidth="fill_parent"
 
-                        android:entries="@array/catNames" />
+                        android:entries="@array/catNames"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/authorLayout"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
