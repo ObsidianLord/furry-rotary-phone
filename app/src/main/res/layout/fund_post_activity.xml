@@ -111,9 +111,13 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/divider_bg" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/textView10"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
@@ -122,10 +126,26 @@
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp"
                     app:lineHeight="18dp" />
-
-
-                <androidx.cardview.widget.CardView
+                <TextView
+                    android:id="@+id/referenceValueTop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:textAlignment="textEnd"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:letterSpacing="-0.01"
+                    android:text="@string/fund_goal"
+                    android:textColor="@color/colorPlaceholder"
+                    android:textSize="14dp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fatMaxCardProgress"
+                android:layout_width="match_parent"
                     android:layout_height="24dp"
                     android:layout_marginTop="6dp"
                     app:cardBackgroundColor="#EAECF0"
@@ -137,6 +157,7 @@
                         android:layout_height="match_parent">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/fatCardProgress"
                             android:layout_width="264dp"
                             android:layout_height="24dp"
                             app:cardBackgroundColor="#4BB34B"
@@ -153,7 +174,7 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <TextView
-                                    android:id="@+id/textView13"
+                                    android:id="@+id/textViewLeft"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="8dp"
@@ -172,7 +193,23 @@
                         </androidx.cardview.widget.CardView>
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/textViewRight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/roboto"
+                            android:letterSpacing="-0.01"
+                            android:text="@string/fund_current_money"
+                            android:textColor="#4BB34B"
+                            android:textSize="14dp"
+                            android:paddingLeft="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/fatCardProgress"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:lineHeight="18dp" />
+
+                        <TextView
+                            android:id="@+id/referenceValueInPlace"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
