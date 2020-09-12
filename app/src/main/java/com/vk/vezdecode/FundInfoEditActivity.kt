@@ -41,6 +41,13 @@ class FundInfoEditActivity : AppCompatActivity() {
             buttonNext.isEnabled = false
         }
 
+
+        if (fundView.image != null) {
+            imageView.setImageBitmap(fundView.image)
+            loadedImageLayout.visibility = View.VISIBLE
+            requestingImageLayout.visibility = View.GONE
+        }
+
         headerToolbar.setNavigationOnClickListener { finish() }
 
         run {
