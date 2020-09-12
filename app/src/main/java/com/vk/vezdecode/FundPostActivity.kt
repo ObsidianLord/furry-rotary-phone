@@ -36,6 +36,8 @@ class FundPostActivity : AppCompatActivity() {
 
         descriptionTextView.text = fundView.description
 
+        referenceValueInPlace.text = Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price)
+        referenceValueTop.text = Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price)
 
         val qwe = Executors.newScheduledThreadPool(1, object: ThreadFactory {
             override fun newThread(r: Runnable): Thread {
@@ -56,7 +58,22 @@ class FundPostActivity : AppCompatActivity() {
     fun updateProgress(i: Int) {
         runOnUiThread {
             progressBar.progress = i
+            if (i == 100) {
+                textViewRight.visibility = View.INVISIBLE
+                textViewLeft.visibility = View.GONE
+                textViewCompletion.text = "${Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price)} собраны!"
+                textViewCompletion.visibility = View.VISIBLE
+                referenceValueInPlace.visibility = View.GONE
+                return@runOnUiThread
+            }
+
             fatCardProgress.layoutParams.width = (fatMaxCardProgress.width * i / 100).toInt()
+
+
+            val currentProgress = (fundView.price!! * i / 100).toInt()
+            textViewLeft.text = currentProgress.toString()
+            textViewRight.text = currentProgress.toString()
+            fundedTextView1.text = resources.getString(R.string.snippet_funded_format).format(Constants.RUSSIAN_PRICE_FORMAT.format(currentProgress), Constants.RUSSIAN_PRICE_FORMAT.format(fundView.price!!))
 
             val testPaint = Paint()
             testPaint.set(textViewLeft.getPaint())
@@ -78,7 +95,6 @@ class FundPostActivity : AppCompatActivity() {
             } else {
                 referenceValueInPlace.visibility = View.VISIBLE
                 referenceValueTop.visibility = View.INVISIBLE
-
             }
 
 

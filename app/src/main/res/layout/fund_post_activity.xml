@@ -189,6 +189,25 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:lineHeight="18dp" />
+
+                                <TextView
+                                    android:id="@+id/textViewCompletion"
+                                    android:visibility="invisible"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/roboto"
+                                    android:fontWeight="600"
+                                    android:letterSpacing="-0.01"
+                                    android:text="@string/fund_current_money"
+                                    android:textColor="@color/colorPrimaryText"
+                                    android:textFontWeight="600"
+                                    android:textSize="14dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:lineHeight="18dp" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
